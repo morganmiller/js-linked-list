@@ -54,4 +54,5 @@ LinkedList.prototype.print = function() {
   };
 };
 
+//for testing:
 exports.LinkedList = LinkedList;
