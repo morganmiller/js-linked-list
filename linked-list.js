@@ -1,3 +1,19 @@
+/*
+  √ append an element to the end of the list
+prepend an element at the beginning of the list
+insert an element at an arbitrary position in the list
+includes? gives back true or false whether the supplied value is in the list
+  √ pop an element from the end of the list
+  √ count the number of elements in the list
+  √ return the head value at the beginning of the list
+  √ return the tail value at the end of the list
+find_by_index find the value at a numeric position
+find_by_value finds the position of the first occurrence of a value
+remove_by_index removes the value at the specified index
+remove_by_value removes the first occurrence of the specified value
+*/
+
+
 function Node(nodeData){
   this.data = nodeData;
   this.next = null;
@@ -6,17 +22,25 @@ function Node(nodeData){
 
 function LinkedList(){
   this.head = null;
-}
+};
 
-LinkedList.prototype.push = function(nodeData) {
-  if(this.head == null) {
-    this.head = new Node(nodeData);
+LinkedList.prototype.tail = function() {
+  if(this.head == null){
+    return null;
   } else {
     var currentNode = this.head
     while(currentNode.next !== null) {
       currentNode = currentNode.next
     };
-    currentNode.next = new Node(nodeData);
+    return currentNode;
+  }
+}
+
+LinkedList.prototype.append = function(nodeData) {
+  if(this.head == null) {
+    this.head = new Node(nodeData);
+  } else {
+    this.tail().next = new Node(nodeData);
   };
 };
 
@@ -32,7 +56,7 @@ LinkedList.prototype.pop = function() {
   }
 };
 
-LinkedList.prototype.length = function() {
+LinkedList.prototype.count = function() {
   if(this.head == null) {
     return 0
   } else {
