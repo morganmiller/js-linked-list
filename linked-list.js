@@ -1,6 +1,6 @@
 /*
   √ append an element to the end of the list
-prepend an element at the beginning of the list
+  √ prepend an element at the beginning of the list
 insert an element at an arbitrary position in the list
 includes? gives back true or false whether the supplied value is in the list
   √ pop an element from the end of the list
@@ -33,14 +33,28 @@ LinkedList.prototype.tail = function() {
       currentNode = currentNode.next
     };
     return currentNode;
-  }
-}
+  };
+};
+
+LinkedList.prototype.setHead = function(nodeData) {
+  this.head = new Node(nodeData);
+};
 
 LinkedList.prototype.append = function(nodeData) {
   if(this.head == null) {
-    this.head = new Node(nodeData);
+    this.setHead(nodeData);
   } else {
     this.tail().next = new Node(nodeData);
+  };
+};
+
+LinkedList.prototype.prepend = function(nodeData) {
+  if(this.head == null) {
+    this.setHead(nodeData);
+  } else {
+    formerHead = this.head
+    this.setHead(nodeData);
+    this.head.next = formerHead;
   };
 };
 
@@ -48,19 +62,19 @@ LinkedList.prototype.pop = function() {
   if(this.head == null) {
     return null;
   } else {
-    currentNode = this.head;
+    var currentNode = this.head;
     while(currentNode.next.next !== null) {
       currentNode = currentNode.next;
     }
     currentNode.next = null;
-  }
+  };
 };
 
 LinkedList.prototype.count = function() {
   if(this.head == null) {
     return 0
   } else {
-    currentNode = this.head;
+    var currentNode = this.head;
     count = 0
     while(currentNode !== null) {
       count += 1;
@@ -77,6 +91,19 @@ LinkedList.prototype.print = function() {
     currentNode = currentNode.next
   };
 };
+
+LinkedList.prototype.findByIndex = function(index) {
+  var currentNode = this.head
+  for(var i = 0; i < index; i++){
+    currentNode = currentNode.next;
+  };
+  return currentNode;
+};
+
+LinkedList.prototype.insert = function(nodeData, index) {
+  
+}
+
 
 //for testing:
 exports.LinkedList = LinkedList;

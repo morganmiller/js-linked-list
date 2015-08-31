@@ -53,4 +53,36 @@ describe('LinkedList', function () {
 
     expect(list.tail().data).to.equal("tail")
   });
+
+  it('should prepend items to the beginning of list', function(){
+    var list = new LinkedList();
+    list.append("first head");
+    list.prepend("new head");
+
+    expect(list.head.data).to.equal("new head")
+    expect(list.tail().data).to.equal("first head")
+  });
+
+  it('should find a node by index', function(){
+    var list = new LinkedList();
+    list.append("data 0");
+    list.append("data 1");
+    list.append("data 2");
+    list.append("data 3");
+
+    expect(list.findByIndex(0).data).to.equal("data 0")
+    expect(list.findByIndex(1).data).to.equal("data 1")
+    expect(list.findByIndex(2).data).to.equal("data 2")
+    expect(list.findByIndex(3).data).to.equal("data 3")
+  });
+
+  it('should insert node at specified position', function(){
+    var list = new LinkedList();
+    list.append("data 0");
+    list.append("data 1");
+    list.append("data 2");
+    list.insert("new data 2", 2);
+
+    expect(list.findByIndex(2).data).to.equal("new data 2");
+  });
 });
