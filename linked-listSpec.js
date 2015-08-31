@@ -6,13 +6,13 @@
 //import assertion syntax from chai
 var expect = require('chai').expect;
 //import LinkedList and methods
-var LinkedList = require('./linked-list.js').LinkedList
+var LinkedList = require('./linked-list.js').LinkedList;
 
 describe('LinkedList', function () {
 
   it('should know the head', function() {
     var list = new LinkedList();
-    list.append("Head")
+    list.append("Head");
     expect(list.head.data).to.equal("Head");
   });
 

@@ -1,13 +1,13 @@
 /*
   √ append an element to the end of the list
   √ prepend an element at the beginning of the list
-insert an element at an arbitrary position in the list
+  √ insert an element at an arbitrary position in the list
 includes? gives back true or false whether the supplied value is in the list
   √ pop an element from the end of the list
   √ count the number of elements in the list
   √ return the head value at the beginning of the list
   √ return the tail value at the end of the list
-find_by_index find the value at a numeric position
+  √ find_by_index find the value at a numeric position
 find_by_value finds the position of the first occurrence of a value
 remove_by_index removes the value at the specified index
 remove_by_value removes the first occurrence of the specified value
@@ -28,7 +28,7 @@ LinkedList.prototype.tail = function() {
   if(this.head == null){
     return null;
   } else {
-    var currentNode = this.head
+    var currentNode = this.head;
     while(currentNode.next !== null) {
       currentNode = currentNode.next
     };
@@ -52,7 +52,7 @@ LinkedList.prototype.prepend = function(nodeData) {
   if(this.head == null) {
     this.setHead(nodeData);
   } else {
-    formerHead = this.head
+    var formerHead = this.head;
     this.setHead(nodeData);
     this.head.next = formerHead;
   };
@@ -75,7 +75,7 @@ LinkedList.prototype.count = function() {
     return 0
   } else {
     var currentNode = this.head;
-    count = 0
+    count = 0;
     while(currentNode !== null) {
       count += 1;
       currentNode = currentNode.next;
@@ -93,7 +93,7 @@ LinkedList.prototype.print = function() {
 };
 
 LinkedList.prototype.findByIndex = function(index) {
-  var currentNode = this.head
+  var currentNode = this.head;
   for(var i = 0; i < index; i++){
     currentNode = currentNode.next;
   };
@@ -101,8 +101,12 @@ LinkedList.prototype.findByIndex = function(index) {
 };
 
 LinkedList.prototype.insert = function(nodeData, index) {
-  
-}
+  var nodeToAppend = this.findByIndex(index-1);
+  var newNodeNext = nodeToAppend.next;
+  var newNode = new Node(nodeData);
+  nodeToAppend.next = newNode;
+  newNode.next = newNodeNext;
+};
 
 
 //for testing:
